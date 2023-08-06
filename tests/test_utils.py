@@ -56,3 +56,7 @@ def test_change_operation_date():
                 {"id": 147815167,
                  "date": "26.8.2020"}]
     assert utils.change_operation_date(data) == expected
+
+
+def test_mask_requisites():
+    assert utils.mask_requisites("Maestro 1596837868705199") == "Maestro 1596 83** **** 5199"
