@@ -1,4 +1,10 @@
 from datetime import date
+import json
+
+def get_operations_from_file(filename):
+    with open(filename, encoding='utf-8') as file:
+        return json.load(file)
+
 
 def sort_operations_by_date(operations):
     """фильтрует массив от пустых операций и сортирует по убыванию даты операции"""
