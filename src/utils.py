@@ -34,3 +34,14 @@ def change_operation_date(operations):
         thedate = date.fromisoformat(operation['date'][:10])
         operation['date'] = f'{thedate.day}.{thedate.month}.{thedate.year}'
     return operations
+
+
+def mask_requisites(requisite):
+    list_req = requisite.split(' ')
+
+    if list_req[0] == 'Счет':
+        list_req[-1] = f'**{list_req[-1][-4:]}'
+    else:
+        list_req[-1] = f'{list_req[-1][:4]} {list_req[-1][4:6]}** **** {list_req[-1][-4:]}'
+    return ' '.join(list_req)
+
