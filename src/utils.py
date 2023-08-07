@@ -1,6 +1,7 @@
 from datetime import date
 import json
 
+
 def get_operations_from_file(filename):
     with open(filename, encoding='utf-8') as file:
         return json.load(file)
@@ -34,7 +35,7 @@ def get_some_executed_operations(operations, quantity=5):
 
 def change_operation_date(operations):
     """принимает список словарей и возвращает его,
-    отформатированный по представлению значения 'дата'
+    с заданным форматом ключа 'дата'
     """
     for operation in operations:
         thedate = date.fromisoformat(operation['date'][:10])
@@ -44,10 +45,22 @@ def change_operation_date(operations):
 
 def mask_requisites(requisite):
     list_req = requisite.split(' ')
-
     if list_req[0] == 'Счет':
         list_req[-1] = f'**{list_req[-1][-4:]}'
     else:
         list_req[-1] = f'{list_req[-1][:4]} {list_req[-1][4:6]}** **** {list_req[-1][-4:]}'
     return ' '.join(list_req)
+
+
+def output_operations_history(operations):
+    """Выводит историю операций в заданном формате"""
+    for operation in operations:
+        first_line = f'{operation["date"]} {operation["description"]}'
+        if operation["description"] == "Открытие вклада":
+            second_line = f'-> {operation["to"]}'
+        else:
+            second_line = f'{operation["from"]} -> {operation["to"]}'
+        third_line = (f'{operation["operationAmount"]["amount"]} '
+                      f'{operation["operationAmount"]["currency"]["name"]}')
+        return f'{first_line}\n{second_line}\n{third_line}'
 
