@@ -1,4 +1,3 @@
-from os import path
 from utils import *
 
 
@@ -8,6 +7,7 @@ def get_operations_history(json_file):
     executed_operations = get_some_executed_operations(sorted_operations)
     formatted_date_operations = change_operation_date(executed_operations)
 
+# перебор операций в цикле для маскировки платежных реквизитов
     for operation in formatted_date_operations:
         if operation["description"] != "Открытие вклада":
             operation["from"] = mask_requisites(operation["from"])
@@ -15,6 +15,7 @@ def get_operations_history(json_file):
         else:
             operation["to"] = mask_requisites(operation["to"])
 
+# применение функции форматированного вывода к каждой операции через цикл
     for operation in formatted_date_operations:
         print(output_operations_history(operation))
 
