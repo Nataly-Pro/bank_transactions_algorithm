@@ -52,15 +52,15 @@ def mask_requisites(requisite):
     return ' '.join(list_req)
 
 
-def output_operations_history(operations):
+def output_operations_history(operation):
     """Выводит историю операций в заданном формате"""
-    for operation in operations:
-        first_line = f'{operation["date"]} {operation["description"]}'
-        if operation["description"] == "Открытие вклада":
-            second_line = f'-> {operation["to"]}'
-        else:
-            second_line = f'{operation["from"]} -> {operation["to"]}'
-        third_line = (f'{operation["operationAmount"]["amount"]} '
-                      f'{operation["operationAmount"]["currency"]["name"]}')
-        return f'{first_line}\n{second_line}\n{third_line}'
+    first_line = f'{operation["date"]} {operation["description"]}'
+    third_line = (f'{operation["operationAmount"]["amount"]} '
+                 f'{operation["operationAmount"]["currency"]["name"]}')
+    if operation["description"] == "Открытие вклада":
+        second_line = f'-> {operation["to"]}'
+    else:
+        second_line = f'{operation["from"]} -> {operation["to"]}'
+    operations_history = f'{first_line}\n{second_line}\n{third_line}\n'
+    return operations_history
 
