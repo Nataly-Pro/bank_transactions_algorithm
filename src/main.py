@@ -1,4 +1,3 @@
-from os import path
 from pathlib import Path
 from utils import get_operations_from_file, sort_operations_by_date,\
     get_executed_operations, change_operation_date, mask_requisites,\

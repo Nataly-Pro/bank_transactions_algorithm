@@ -1,9 +1,6 @@
-from os import path
 from pathlib import Path
-import sys
 import utils
 
-sys.path.append(path.abspath(path.join('src', 'utils')))
 
 ROOT_PATH = Path(__file__).parent.parent
 TESTS_PATH = Path.joinpath(ROOT_PATH, "tests")

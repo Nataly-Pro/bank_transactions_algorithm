@@ -1,7 +1,4 @@
 from pathlib import Path
-import sys
-
-sys.path.insert(1, '../src')
 import main
 
 ROOT_PATH = Path(__file__).parent

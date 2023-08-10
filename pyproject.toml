@@ -9,8 +9,7 @@ packages = [{include = "course_work_project"}]
 [tool.poetry.dependencies]
 python = "^3.10"
 datetime = "^5.2"
-os-path2 = "^0.0.4"
-python-dotenv = "^1.0.0"
+pathlib = "^1.0.1"
 
 
 [tool.poetry.group.dev.dependencies]
