@@ -1,11 +1,8 @@
-from pathlib import Path
-from utils import get_operations_from_file, sort_operations_by_date,\
+from settings import OPERATION_JSON
+from src.utils import get_operations_from_file, sort_operations_by_date,\
     get_executed_operations, change_operation_date, mask_requisites,\
     output_operations_history
 
-ROOT_PATH = Path(__file__).parent.parent
-SRC_PATH = Path.joinpath(ROOT_PATH, "src")
-OPERATION_JSON = Path.joinpath(SRC_PATH, "operations.json")
 
 def get_operations_history(json_file):
     operations = get_operations_from_file(json_file)
