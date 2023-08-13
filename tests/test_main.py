@@ -1,12 +1,9 @@
-from pathlib import Path
-import main
-
-ROOT_PATH = Path(__file__).parent
-FILE_PATH = Path.joinpath(ROOT_PATH, "file.json")
+from main import get_operations_history
+from settings import TEST_FILE_PATH
 
 
 def test_get_operations_history():
-    assert main.get_operations_history(FILE_PATH) == \
+    assert get_operations_history(TEST_FILE_PATH) == \
            ('26.8.2019 Перевод организации\n'
             'Maestro 1596 83** **** 5199 -> Счет **9589\n'
             '31957.58 руб.\n'
